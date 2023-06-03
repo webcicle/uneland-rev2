@@ -6,9 +6,6 @@ type Props = {};
 
 const Header = (props: Props) => {
 	const [isOpen, setIsOpen] = useState(false);
-
-	console.log({ isOpen });
-
 	const closeMenu = () => setIsOpen(false);
 	const openMenu = () => setIsOpen(true);
 
