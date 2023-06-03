@@ -1,0 +1,90 @@
+---
+import { Icon } from 'astro-icon'
+
+const services = [
+   {
+      icon: "mdi:content-copy" ,
+      title: 'Copywriting',
+      subtitle: 'Ads, Marketing Texts, Product Descriptions, Emails',
+      description: "Elevate your brand's voice with our persuasive and impactful copywriting services. We specialize in crafting compelling ads, engaging marketing texts, crisp product descriptions, and personalized emails that not only resonate with your target audience but also drive them to action."
+   },
+   {
+      icon: "mdi:typewriter" ,
+      title: 'Content writing',
+      subtitle:"Long-form, SEO Optimized, Articles, Blogs, Case Studies, Reviews" ,
+      description: "Harness the power of words with our content writing services. Our expert writers deliver insightful long-form articles, SEO-optimized blogs, convincing case studies, and credible reviews that enhance your brand's visibility, engage your audience, and drive organic traffic."
+   },
+   {
+      icon: "mdi:arrow-collapse" ,
+      title: 'Localisation',
+      subtitle: "Apps, Software, Terms and Conditions, String Translations, Subtitles",
+      description: "Go global with our localization services. We adapt your apps, software, legal documents, and multimedia content to resonate with your international audience, taking into account their language, culture, and regional norms, thus ensuring a seamless user experience."
+   },
+   {
+      icon: "mdi:developer-board" ,
+       title: 'Web development',
+      subtitle: "Landing Pages, Full-stack Applications, AI Integrations",
+      description: "Stay ahead of the curve with our cutting-edge web development services. We design and develop responsive landing pages, build comprehensive full-stack applications, and integrate advanced AI functionalities that not only cater to your unique business needs but also ensure an engaging user experience."
+   },
+   {
+      icon: "mdi:layers-search" ,
+      title: 'SEO/SEM',
+      subtitle: "Audits, Optimization, Keyword Research, Technical SEO",
+      description: "Boost your online presence with our comprehensive SEO services. Our SEO experts conduct detailed audits, optimize your website for relevant keywords, and perform technical SEO to enhance your site's visibility on search engines, drive quality traffic, and increase conversions."
+   },
+   {
+      icon:"mdi:brain",
+      title: 'AI Prompt Engineering and Automation',
+      subtitle: "OpenAI/ChatGPT, Midjourney, Automating Tasks",
+      description: 'Streamline your operations with our AI-driven automation services. We leverage advanced technologies like OpenAI/ChatGPT and Midjourney to automate tasks, build conversational AI interfaces, and engineer AI prompts that can intelligently interact with your users and significantly enhance their experience.'
+   },
+
+]
+---
+
+<div class='bg-blue-300'>
+	<section
+		id='services'
+		class='max-w-5xl min-h-screen mx-auto py-10 font-koulen'
+	>
+		<h2 class='text-6xl text-center my-4 text-gray-50'>Unelandia Services.</h2>
+		<div
+			class='divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0'
+		>
+      {
+services.map((service, index) => (
+        <div
+				class='rounded-bl-lg rounded-br-lg sm:rounded-bl-none group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 cursor-pointer'
+			>
+				<div class="aspect-square w-8 group-hover:text-blue-500">
+
+						<Icon name={service.icon} class="">
+
+				</div>
+				<div class='mt-8'>
+					<h3 class='text-base font-semibold leading-6 text-gray-900'>
+						<div class='focus:outline-none'>
+							<!-- Extend touch target to entire panel -->
+							<span class='absolute inset-0' aria-hidden='true'></span>
+							{service.title}
+						</div>
+					</h3>
+					<p class='mt-2 text-sm text-gray-500'>
+						{service.description}
+					</p>
+				</div>
+				<span
+					class='pointer-events-none absolute right-6 top-6 text-gray-300 group-hover:text-gray-400'
+					aria-hidden='true'
+				>
+					<svg class='h-6 w-6' fill='currentColor' viewBox='0 0 24 24'>
+						<path
+							d='M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z'
+						></path>
+					</svg>
+				</span>
+			</div>
+      ))}
+		</div>
+	</section>
+</div>

@@ -4,14 +4,15 @@ import Layout from '../layouts/Layout.astro';
 import '@fontsource/koulen';
 import '../../styles/base.css';
 import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
 ---
 
 <Layout title='Welcome to Astro.'>
-	<main>
-		<div class='bg-white'>
+	<main class='scroll-smooth'>
+		<div class='bg-white scroll-smooth'>
 			<Header client:load />
-
 			<Hero />
+			<Services />
 		</div>
 	</main>
 </Layout>
