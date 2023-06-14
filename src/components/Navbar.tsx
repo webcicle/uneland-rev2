@@ -6,7 +6,7 @@ type Props = {
 
 const Navbar: FC<Props> = ({ openMenu }) => {
 	return (
-		<div className='px-6 pt-6 lg:max-w-2xl lg:pl-8 lg:pr-0'>
+		<div className='px-2 pt-6 lg:max-w-2xl lg:pl-8 lg:pr-0'>
 			<nav
 				className='flex items-center justify-between lg:justify-start w-full'
 				aria-label='Global'>
@@ -14,7 +14,7 @@ const Navbar: FC<Props> = ({ openMenu }) => {
 					<span className='sr-only'>Unelandia</span>
 					<img
 						alt='Unelandia logo'
-						className='h-8 w-auto lg:max-w-[85%]'
+						className='h-8 w-auto'
 						src='/assets/images/unelandia-logo-black.png'
 					/>
 				</a>

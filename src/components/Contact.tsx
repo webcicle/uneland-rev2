@@ -15,11 +15,24 @@ export default function ContactForm() {
 		register,
 		handleSubmit,
 		formState: { errors },
+		watch,
 	} = useForm<InputForm>();
 
-	const submitForm: SubmitHandler<InputForm> = (data) => {
+	const submitForm: SubmitHandler<InputForm> = async (data) => {
 		setStatus('Sending');
-		console.log(data);
+		try {
+			await fetch('/api/mail/sendMail', {
+				method: 'POST',
+				body: JSON.stringify(data),
+				headers: { 'Content-Type': 'application/json' },
+			});
+			setStatus('Sent');
+			setTimeout(() => {
+				setStatus('Idle');
+			}, 2000);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
@@ -30,7 +43,7 @@ export default function ContactForm() {
 				alt=''
 			/>
 
-			<div className='absolute inset-0 w-full z-[-1] h-full object-cover bg-blue-200 opacity-80' />
+			<div className='absolute inset-0 w-full z-[-1] h-full object-cover bg-sky-200 opacity-80' />
 			<div className='mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2'>
 				<div className='relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48'>
 					<div className='mx-auto max-w-xl lg:mx-0 lg:max-w-lg'>
@@ -67,11 +80,11 @@ export default function ContactForm() {
 						<h2 className='text-3xl font-bold tracking-tight text-gray-50'>
 							Ready to Grow? Let's go!
 						</h2>
-						<p className='mt-6 text-lg leading-8 text-blue-900'>
-							If you're to elevate your brand and drive your business forward,
-							we'd love to hear from you. Share your project ideas, business
-							needs, or even your toughest challenges, and let's craft a
-							strategy tailored just for you.
+						<p className='mt-6 text-lg leading-8 text-sky-900'>
+							If you're lookoing to elevate your brand and drive your business
+							forward, we'd love to hear from you. Share your project ideas,
+							business needs, or even your toughest challenges, and let's craft
+							a success strategy – tailored just for you.
 						</p>
 					</div>
 				</div>
@@ -91,7 +104,7 @@ export default function ContactForm() {
 										type='text'
 										{...register('firstName', { required: true })}
 										id='first-name'
-										className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-base sm:leading-6'
+										className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-base sm:leading-6'
 									/>
 								</div>
 							</div>
@@ -106,7 +119,7 @@ export default function ContactForm() {
 										type='text'
 										{...register('lastName', { required: true })}
 										id='last-name'
-										className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-base sm:leading-6'
+										className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-base sm:leading-6'
 									/>
 								</div>
 							</div>
@@ -121,7 +134,7 @@ export default function ContactForm() {
 										type='email'
 										{...register('email', { required: true })}
 										id='email'
-										className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-base sm:leading-6'
+										className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-base sm:leading-6'
 									/>
 								</div>
 							</div>
@@ -136,7 +149,7 @@ export default function ContactForm() {
 										type='tel'
 										{...register('phoneNumber', { required: true })}
 										id='phone-number'
-										className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-base sm:leading-6'
+										className='block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-base sm:leading-6'
 									/>
 								</div>
 							</div>
@@ -151,14 +164,14 @@ export default function ContactForm() {
 										{...register('message', { required: true })}
 										id='message'
 										rows={4}
-										className='resize-none block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-base sm:leading-6'></textarea>
+										className='resize-none block w-full rounded-md border-0 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-base sm:leading-6'></textarea>
 								</div>
 							</div>
 						</div>
 						<div className='mt-8 flex justify-end'>
 							<button
 								type='submit'
-								className='rounded-md bg-blue-600 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'>
+								className='rounded-md bg-sky-600 px-3.5 py-2.5 text-center text-base font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600'>
 								Send message
 							</button>
 						</div>

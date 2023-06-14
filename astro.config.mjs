@@ -11,4 +11,7 @@ export default defineConfig({
 		}),
 		react(),
 	],
+	output: 'server',
 });
+
+export const prerender = false;

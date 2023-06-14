@@ -21,7 +21,7 @@ const MobileNav = ({
 						<span className='sr-only'>Your Company</span>
 						<img
 							className='h-8 w-auto'
-							src='/assets/images/unelandia-logo-black.svg'
+							src='/assets/images/unelandia-logo-black.png'
 							alt=''
 						/>
 					</a>
